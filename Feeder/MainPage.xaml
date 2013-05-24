@@ -46,8 +46,8 @@
                         <DataTemplate>
                             <StackPanel>
                                 <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextTitle3Style}" />
-                                <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}" />
-                                <TextBlock Text="{Binding Url}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="{StaticResource PhoneAccentBrush}" Tap="TextBlock_Tap" />
+                                <TextBlock Text="{Binding LineTwo}" Style="{StaticResource PhoneTextSubtleStyle}" TextWrapping="Wrap" />
+                                <TextBlock Text="{Binding Url}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="{StaticResource PhoneAccentBrush}" Margin="12,0,0,12" Tap="TextBlock_Tap" />
                             </StackPanel>
                         </DataTemplate>
                     </phone:LongListSelector.ItemTemplate>

@@ -5,6 +5,7 @@ using System.Net;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Feeder.Extensions;
 using Feeder.Resources;
 
 namespace Feeder.ViewModels
@@ -65,20 +66,13 @@ namespace Feeder.ViewModels
         public async void LoadData()
         {
             // Sample data; replace with real data
-            var r = new WebClient();
             var xml = await DownloadString("http://habrahabr.ru/rss/hubs/");
-            /*this.Items.Add(new ItemViewModel()
-                {
-                    LineOne = "HELLO! Online: celeb & royal news, magazines, babies,",
-                    LineTwo = "HELLO! Onliner brings you the latest celebrity",
-                    Url = "asdg"
-                });*/
             foreach (var item in XDocument.Parse(xml).Element("rss").Element("channel").Elements("item"))
             {
                 this.Items.Add(new ItemViewModel()
                     {
                         LineOne = item.Element("title").Value,
-                        LineTwo = item.Element("description").Value.Substring(0, 200),
+                        LineTwo = item.Element("description").Value.FromHtmlToPreview(),
                         Url = item.Element("guid").Value
                     });
 
